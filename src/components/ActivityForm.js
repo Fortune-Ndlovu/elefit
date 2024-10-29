@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const ActivityForm = ({onSubmit, initialData = {}}) => {
+const ActivityForm = ({onSubmit, initialData = {}, isEditing }) => {
     const [name, setName] = useState(initialData.name || '');
     const [duration, setDuration] = useState(initialData.duration || '');
     const [type, setType] = useState(initialData.type || '');
+
+
+    // Populate form fields when initialData changes (i.e., during editing)
+    useEffect(() => {
+        setName(initialData.name || '');
+        setDuration(initialData.duration || '');
+        setType(initialData.type || '');
+    }, [initialData]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -36,7 +44,7 @@ const ActivityForm = ({onSubmit, initialData = {}}) => {
                 onChange={(e) => setType(e.target.value)}
                 required
             />
-            <button type="submit">Save Activity</button>
+            <button type="submit">{isEditing ? 'Update Activity' : 'Save Activity'}</button>
         </form>
     );
 };
