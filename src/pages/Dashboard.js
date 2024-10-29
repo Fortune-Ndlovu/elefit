@@ -39,7 +39,7 @@ const Dashboard = () => {
 
     return (
         <div>
-            <h2>Activity Dashboard</h2>
+            <h2>Welcome to Elefit 🐘</h2>
             <div>
                 <ActivityForm
                     onSubmit={handleAddOrUpdateActivity}
@@ -55,7 +55,7 @@ const Dashboard = () => {
                 />
             </div>
         </div>
-    );
+    )
 };
 
 export default Dashboard;
